@@ -7,8 +7,17 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  chartDonutData = [
+    {label: 'Download Sales', value: 12},
+    {label: 'In-Store Sales', value: 30},
+    {label: 'Mail-Order Sales', value: 20}
+  ];
 
   constructor() { }
+
+
+
+
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -117,9 +126,9 @@ export class DashboardComponent implements OnInit {
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
       var datawebsiteViewsChart = {
-        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+        labels: ['True', 'False'],
         series: [
-          [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+          [100, 895]
 
         ]
       };

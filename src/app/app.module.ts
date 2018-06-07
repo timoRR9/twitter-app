@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import { MorrisJsModule } from 'angular-morris-js';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {DashboardComponent} from './dashboard/dashboard.component';
     HttpModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MorrisJsModule
   ],
   declarations: [
     AppComponent,
