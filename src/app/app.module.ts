@@ -8,6 +8,7 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import { MorrisJsModule } from 'angular-morris-js';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MorrisJsModule } from 'angular-morris-js';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    MorrisJsModule
+    MorrisJsModule,
+    NgxChartsModule,
   ],
   declarations: [
     AppComponent,

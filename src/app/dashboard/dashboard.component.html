@@ -1,15 +1,14 @@
 <div class="main-content">
   <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-3 hidden-xs hidden-md"></div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="card card-stats">
                   <div class="card-header card-header-info card-header-icon">
                       <div class="card-icon">
                         <i class="fa fa-twitter"></i>
                       </div>
                       <p class="card-category">Nombre de tweet</p>
-                      <h3 class="card-title">75</h3>
+                      <h3 class="card-title" *ngIf="infos">{{infos?.totalTweets}}</h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
@@ -18,14 +17,14 @@
                   </div>
               </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="card card-stats">
                   <div class="card-header card-header-info card-header-icon">
                       <div class="card-icon">
                           <i class="fa fa-twitter"></i>
                       </div>
                       <p class="card-category">Moyenne des retweet</p>
-                      <h3 class="card-title">245</h3>
+                      <h3 class="card-title" *ngIf="infos">{{infos?.moyRetweet}}</h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
@@ -34,36 +33,85 @@
                   </div>
               </div>
           </div>
-        <div class="col-lg-3 hidden-xs hidden-md"></div>
-      </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                  <i class="fa fa-twitter"></i>
+                </div>
+                <p class="card-category">Moyenne de followers</p>
+                <h3 class="card-title" *ngIf="infos">{{infos?.moyFollowers}}</h3>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <i class="material-icons">update</i> Sur les 7 derniers jours
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden-md hidden-xs col-lg-2"></div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                  <i class="fa fa-twitter"></i>
+                </div>
+                <p class="card-category">Couverture directe possible</p>
+                <h3 class="card-title" *ngIf="infos">{{infos?.totalFollowers}}</h3>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <i class="material-icons">update</i> Sur les 7 derniers jours
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+              <div class="card-icon">
+                <i class="fa fa-twitter"></i>
+              </div>
+              <p class="card-category">Couverture moyenne possible</p>
+              <h3 class="card-title" *ngIf="infos">{{infos?.moyCoverage}}</h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">update</i> Sur les 7 derniers jours
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="hidden-md hidden-xs col-lg-2"></div>
+        </div>
       <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
               <div class="card card-chart">
-                  <div class="card-header card-header-success">
-                    <div mk-morris-js [data]="chartDonutData" type="Donut"></div>
-                  </div>
-                  <div class="card-body">
-                      <h4 class="card-title">Daily Sales</h4>
+                  <div class="card-header">
+                    <ngx-charts-bar-vertical
+                      [view]="view"
+                      [scheme]="colorScheme"
+                      [results]="line"
+                      [gradient]="gradient"
+                      [xAxis]="showXAxis"
+                      [yAxis]="showYAxis"
+                      [legend]="showLegend"
+                      [showXAxisLabel]="showXAxisLabel"
+                      [showYAxisLabel]="showYAxisLabel"
+                      [xAxisLabel]="xAxisLabel"
+                      [yAxisLabel]="yAxisLabel">
+                    </ngx-charts-bar-vertical>
                   </div>
               </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
               <div class="card card-chart">
-                  <div class="card-header card-header-warning">
-                      <div class="ct-chart" id="websiteViewsChart"></div>
-                  </div>
-                  <div class="card-body">
-                      <h4 class="card-title">Email Subscriptions</h4>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card card-chart">
-                  <div class="card-header card-header-danger">
-                      <div class="ct-chart" id="completedTasksChart"></div>
-                  </div>
-                  <div class="card-body">
-                      <h4 class="card-title">Completed Tasks</h4>
+                  <div class="card-header fix">
+                    <ngx-charts-pie-grid
+                      [view]="view"
+                      [scheme]="colorScheme"
+                      [results]="line2">
+                    </ngx-charts-pie-grid>
                   </div>
               </div>
           </div>
