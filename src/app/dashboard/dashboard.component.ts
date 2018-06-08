@@ -51,11 +51,11 @@ export class DashboardComponent implements OnInit {
   line2 = [
     {
       "name": "A un pays",
-      "value": 12
+      "value": 0
     },
     {
       "name": "N'a pas de pays",
-      "value": 26
+      "value": 0
     },
   ];
   view;
@@ -73,11 +73,17 @@ export class DashboardComponent implements OnInit {
 
 
   infos: any;
+  pays: any;
 
   constructor(private http: Http) { }
 
   getTweet() {
     return this.http.get('http://localhost:3000/tweets-moy')
+      .map(resp => resp.json())
+  }
+
+  getPays() {
+    return this.http.get('http://localhost:3000/nb-pays')
       .map(resp => resp.json())
   }
 
@@ -88,6 +94,15 @@ export class DashboardComponent implements OnInit {
         this.infos.moyRetweet = Math.round(this.infos.moyRetweet);
         this.infos.moyFollowers = Math.round(this.infos.moyFollowers);
         this.infos.moyCoverage = Math.round(this.infos.moyCoverage);
+      });
+
+    this.getPays()
+      .subscribe(resp => {
+        this.pays = resp;
+        this.line2[0].value = this.pays.totalNbPays - this.pays.countries[this.pays.countries.length - 1].value;
+        this.line2[1].value = this.pays.countries[this.pays.countries.length - 1].value;
+
+        console.log(resp);
       });
   }
 
